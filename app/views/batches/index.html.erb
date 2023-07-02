@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Batches</h1>
+
+<p><b>School:</b><span><%= @school.name %></span></p>
+<p><b>Course:</b><span><%= @course.name %></span></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @batches.each do |batch| %>
+      <tr>
+        <td><%= batch.name %></td>
+        <td><%= batch.description %></td>
+        <td><%= link_to 'Show', school_course_batch_path(@school, @course, batch) %></td>
+        <td><%= link_to 'Edit', edit_school_course_batch_path(@school, @course, batch) %></td>
+        <td><%= link_to 'Destroy', school_course_batch_path(@school, @course, batch), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Students', school_course_batch_students_path(@school, @course, batch) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Batch', new_school_course_batch_path %><br/>
+<%= link_to 'Back', school_courses_url(@school) %>

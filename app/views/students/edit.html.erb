@@ -1,0 +1,6 @@
+<h1>Editing Student</h1>
+
+<%= render 'form', student: @student %>
+
+<%= link_to 'Show', school_course_batch_student_path(@school, @course, @batch, @student) %> |
+<%= link_to 'Back', school_course_batch_students_path %>

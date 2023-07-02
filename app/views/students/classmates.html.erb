@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Classmates</h1>
+
+<p><b>School:</b><span><%= @school.name %></span></p>
+<p><b>Course:</b><span><%= @course.name %></span></p>
+<p><b>Batch:</b><span><%= @batch.name %></span></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @classmates.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.status %></td>
+        <td><%= link_to 'Show', school_course_batch_student_path(@school, @course, @batch, student) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', school_course_batches_url(@school, @course) %>

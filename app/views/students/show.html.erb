@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @student.status %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @school.name %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @batch.name %>
+</p>
+
+<%= link_to 'Edit', edit_school_course_batch_student_path(@school, @course, @batch, @student) %> |
+<% if current_school_user.is_a? Student %>
+  <%= link_to 'Back', classmates_school_course_batch_student_path %>
+<% else %>
+  <%= link_to 'Back', school_course_batch_students_path %>
+<% end %>

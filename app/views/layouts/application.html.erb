@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SchoolManagementSystem</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+    <% if school_user_signed_in? %>
+      Signed in as <%= current_school_user.email %>. <br/> Not you?
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Admin Sign In", new_user_session_path %> <br/>
+      <%= link_to "School Admin Sign In", new_school_admin_session_path %> <br/>
+      <%= link_to "Student Sign In", new_student_session_path %> <br/>
+      <%= link_to "Student Sign Up", new_student_registration_path %> <br/>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

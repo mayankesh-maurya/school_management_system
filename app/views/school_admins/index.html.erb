@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>School Admins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>School</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @school_admins.each do |school_admin| %>
+      <tr>
+        <td><%= school_admin.name %></td>
+        <td><%= school_admin.email %></td>
+        <td><%= @school.name %></td>
+        <%# if current_school_user.class.name == "User" %>
+        <td><%= link_to 'Show', school_school_admin_path(@school, school_admin) %></td>
+        <td><%= link_to 'Edit', edit_school_school_admin_path(@school, school_admin) %></td>
+        <td><%= link_to 'Destroy', school_school_admin_path(@school, school_admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New School Admin', new_school_school_admin_path %> <br/>
+<%= link_to 'Back', schools_url %>
